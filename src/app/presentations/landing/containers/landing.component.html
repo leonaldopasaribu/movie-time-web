@@ -1,0 +1,53 @@
+<main>
+  <app-header></app-header>
+
+  <section class="bg-[#292E36] px-[120px] py-[89px]">
+    <div class="flex items-center justify-between">
+      <div>
+        <h2 class="relative inline-block text-2xl font-semibold text-white">
+          <span class="absolute -top-2 left-0 h-1 w-12 bg-red-500"></span>
+          Discover Movies
+        </h2>
+      </div>
+      <div class="flex gap-2">
+        <button
+          appButton
+          [theme]="
+            selectedSort === 'popularity'
+              ? buttonTheme.Primary
+              : buttonTheme.Secondary
+          "
+          (click)="onSortButtonClick('popularity')"
+        >
+          Popularity
+        </button>
+        <button
+          appButton
+          [theme]="
+            selectedSort === 'releaseDate'
+              ? buttonTheme.Primary
+              : buttonTheme.Secondary
+          "
+          (click)="onSortButtonClick('releaseDate')"
+        >
+          Release Date
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="mt-[43px] grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8"
+    >
+      @for (movie of $movies(); track $index) {
+        <app-card
+          [image]="movie.poster"
+          [year]="movie.year"
+          [title]="movie.title"
+          rating="9.0"
+        ></app-card>
+      }
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</main>
