@@ -1,0 +1,42 @@
+<header
+  class="flex items-center justify-between bg-gray-900 px-[120px] py-3 text-white"
+>
+  <div class="flex items-center">
+    <img
+      src="assets/images/movie-time-logo.svg"
+      alt="Moovie Time Logo"
+      class="mr-2 h-8"
+    />
+  </div>
+
+  <div class="relative w-1/3">
+    <div class="absolute inset-y-0 left-0 flex items-center pl-3.5">
+      <img src="assets/icons/film.svg" alt="Film" />
+    </div>
+
+    <input
+      type="text"
+      id="email-address-icon"
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pr-10 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+      placeholder="Find movie"
+    />
+
+    <div class="absolute inset-y-0 right-0 flex items-center pr-3.5">
+      <button class="text-gray-400 focus:outline-none">
+        <img src="assets/icons/search.svg" alt="Search Icon" class="h-5 w-5" />
+      </button>
+    </div>
+  </div>
+
+  <nav class="flex space-x-6">
+    <div class="flex cursor-pointer gap-2">
+      <img src="assets/icons/menu.svg" alt="Menu" />
+      <a routerLink="/categories">CATEGORIES</a>
+    </div>
+    <div class="cursor-pointer">
+      <a routerLink="/movies">MOVIES</a>
+    </div>
+    <div class="cursor-pointer"><a routerLink="/tv-shows">TV SHOWS</a></div>
+    <div class="cursor-pointer"><a routerLink="/login">LOGIN</a></div>
+  </nav>
+</header>

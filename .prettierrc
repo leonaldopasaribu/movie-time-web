@@ -10,15 +10,6 @@
   "arrowParens": "avoid",
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "ignore",
-  "plugins": [
-    "prettier-plugin-tailwindcss"
-  ],
-  "overrides": [
-    {
-      "files": "*.html",
-      "options": {
-        "parser": "angular"
-      }
-    }
-  ]
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "overrides": [{ "files": "*.html", "options": { "parser": "angular" } }]
 }
