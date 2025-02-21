@@ -4,8 +4,9 @@ export const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('src/app/presentations/landing/routes/landing.routes').then(
+      import('src/app/presentations/movie/routes/movie.routes').then(
         m => m.routes,
       ),
   },
+
 ];

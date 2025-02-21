@@ -1,6 +1,6 @@
 import { inject, Injectable, Signal } from '@angular/core';
 
-import { SAMPLE_TITLE } from '../constants/landing.constants';
+import { SAMPLE_TITLE } from '../constants/movie.constants';
 import { LandingStore } from '../stores/landing.store';
 
 import { MovieRepository } from 'src/app/core/repositories/movie.repository';
@@ -33,6 +33,7 @@ export class LandingViewModel {
     this.movieRepository.fetchMany(title).subscribe({
       next: response => {
         this.landingStore.loadMovies(response);
+        this.landingStore.markAsSuccess();
       },
       error: error => {
         this.landingStore.markAsError(error.message);

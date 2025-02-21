@@ -1,0 +1,40 @@
+<div class="w-72 rounded-lg bg-gray-900 p-[19px]">
+  <div class="mx-[-34px] border-b border-gray-700 px-[19px] pb-2">
+    <p class="font-semibold text-white">Sort Result By</p>
+  </div>
+
+  <div class="mx-[-34px] mt-4 border-b border-gray-700 px-[19px] pb-4">
+    <select class="mt-2 w-full rounded bg-gray-800 p-2 text-sm text-white">
+      <option *ngFor="let option of sortOptions" [value]="option">
+        {{ option }}
+      </option>
+    </select>
+  </div>
+
+  <div class="mx-[-34px] items-center border-b border-gray-700 px-[19px] pb-4">
+    <h3 class="mt-4 font-semibold text-white">Genres</h3>
+  </div>
+  <div
+    *ngFor="let genre of genres"
+    class="mt-4 flex items-center justify-between"
+  >
+    <span class="text-sm text-white">{{ genre }}</span>
+    <input
+      type="checkbox"
+      [id]="genre"
+      class="hidden"
+      (change)="toggleGenre(genre)"
+      [checked]="selectedGenres.has(genre)"
+    />
+    <div
+      class="flex h-5 w-5 cursor-pointer items-center justify-center rounded border"
+      [ngClass]="{
+        'border-red-500 bg-red-500': selectedGenres.has(genre),
+        'border-gray-400': !selectedGenres.has(genre),
+      }"
+      (click)="toggleGenre(genre)"
+    >
+      <span *ngIf="selectedGenres.has(genre)" class="text-white">✔</span>
+    </div>
+  </div>
+</div>

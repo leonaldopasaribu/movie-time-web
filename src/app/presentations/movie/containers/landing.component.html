@@ -1,7 +1,7 @@
 <main>
   <app-header></app-header>
 
-  <section class="bg-[#292E36] px-[120px] py-[89px]">
+  <section class="Landing px-[120px] py-[89px]">
     <div class="flex items-center justify-between">
       <div>
         <h2 class="relative inline-block text-2xl font-semibold text-white">
@@ -36,13 +36,15 @@
     </div>
 
     <div
-      class="mt-[43px] grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8"
+      class="mt-[43px] grid grid-cols-2 gap-6 gap-x-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7"
     >
       @for (movie of $movies(); track $index) {
         <app-card
+          [isLoading]="$isLoading()"
           [image]="movie.poster"
-          [year]="movie.year"
           [title]="movie.title"
+          [type]="movie.type"
+          [year]="movie.year"
           rating="9.0"
         ></app-card>
       }

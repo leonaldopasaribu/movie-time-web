@@ -14,7 +14,6 @@ import { HeaderComponent } from 'src/app/shared/components/header/header.compone
 import { ButtonDirective, ButtonTheme } from 'src/app/shared/directives/button';
 
 @Component({
-  selector: 'app-landing',
   imports: [ButtonDirective, CardComponent, FooterComponent, HeaderComponent],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],

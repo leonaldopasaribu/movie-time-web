@@ -1,21 +1,55 @@
-<div class="relative w-48 overflow-hidden">
+<div class="group relative w-48 overflow-hidden">
   <div class="relative">
-    <img
-      src="{{ image }}"
-      alt="Movie Poster"
-      class="h-auto w-full"
-      width="220"
-      height="330"
-    />
-    <div
-      class="absolute top-0 right-0 px-2 py-1 text-xs font-bold text-white"
-      style="background-color: rgba(0, 0, 0, 0.7)"
-    >
-      {{ rating }}
-    </div>
+    @if (isLoading) {
+      <div class="h-[330px] w-full animate-pulse bg-gray-300"></div>
+    } @else {
+      <img
+        src="{{ image }}"
+        alt="Movie Poster"
+        class="h-auto w-full transition-opacity duration-300 group-hover:opacity-30"
+        width="220"
+        height="330"
+      />
+      <div
+        class="absolute top-0 right-0 px-2 py-1 text-xs font-bold text-white"
+        style="background-color: rgba(0, 0, 0, 0.7)"
+      >
+        {{ rating }}
+      </div>
+    }
   </div>
+
+  @if (isLoading) {
+    <div
+      class="bg-opacity-80 absolute inset-0 flex flex-col items-center justify-center bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+    >
+      <div class="flex items-center space-x-1 text-lg font-bold text-white">
+        <div class="h-6 w-6 animate-pulse bg-gray-400"></div>
+        <div class="h-6 w-6 animate-pulse bg-gray-400"></div>
+      </div>
+      <div class="mt-1 mt-[25px] h-4 w-20 animate-pulse bg-gray-400"></div>
+      <div class="mt-[25px] h-10 w-24 animate-pulse bg-gray-400"></div>
+    </div>
+  } @else {
+    <div
+      class="bg-opacity-80 absolute inset-0 flex flex-col items-center justify-center bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+    >
+      <div class="flex items-center space-x-1 text-lg font-bold text-white">
+        <img src="assets/icons/star.svg" alt="Star" />
+        <span>{{ rating }}</span>
+      </div>
+      <p class="mt-1 mt-[25px] text-sm text-white capitalize">{{ type }}</p>
+      <button appButton class="mt-[25px] px-[33px]" id="BtnView">View</button>
+    </div>
+  }
+
   <div class="p-2 text-white">
-    <h3 class="text-sm font-semibold">{{ title }}</h3>
-    <p class="text-xs text-gray-400">{{ year }}</p>
+    @if (isLoading) {
+      <div class="mb-2 h-4 w-3/4 animate-pulse bg-gray-400"></div>
+      <div class="h-3 w-1/2 animate-pulse bg-gray-400"></div>
+    } @else {
+      <h3 class="text-sm font-semibold">{{ title }}</h3>
+      <p class="text-xs text-gray-400">{{ year }}</p>
+    }
   </div>
 </div>
