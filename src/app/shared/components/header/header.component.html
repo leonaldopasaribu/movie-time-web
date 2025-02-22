@@ -1,23 +1,23 @@
 <header
-  class="relative z-1 flex items-center justify-between bg-gray-900/50 px-[120px] py-[18px] text-white"
+  class="relative z-10 flex items-center justify-between bg-gray-900/50 px-6 py-4 text-white md:px-12 lg:px-[120px]"
 >
   <div class="flex items-center">
     <img
       src="assets/images/movie-time-logo.svg"
-      alt="Moovie Time Logo"
+      alt="Movie Time Logo"
       class="mr-2 h-8 cursor-pointer"
       routerLink="/"
     />
   </div>
 
-  <div class="relative w-1/3">
+  <div class="relative hidden w-full max-w-md sm:block md:w-1/3">
     <div class="absolute inset-y-0 left-0 flex items-center pl-3.5">
       <img src="assets/icons/film.svg" alt="Film" />
     </div>
 
     <input
       type="text"
-      id="email-address-icon"
+      id="search"
       class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pr-10 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
       placeholder="Find movie"
     />
@@ -29,15 +29,28 @@
     </div>
   </div>
 
-  <nav class="flex space-x-6">
+  <nav class="hidden space-x-6 md:flex">
     <div class="flex cursor-pointer gap-2">
       <img src="assets/icons/menu.svg" alt="Menu" />
       <a routerLink="/categories">CATEGORIES</a>
     </div>
-    <div class="cursor-pointer">
-      <a routerLink="/movies">MOVIES</a>
-    </div>
+    <div class="cursor-pointer"><a routerLink="/movies">MOVIES</a></div>
     <div class="cursor-pointer"><a routerLink="/tv-shows">TV SHOWS</a></div>
     <div class="cursor-pointer"><a routerLink="/login">LOGIN</a></div>
   </nav>
+
+  <button class="block md:hidden" (click)="toggleMobileMenu()">
+    <img src="assets/icons/menu.svg" alt="Menu Icon" class="h-6 w-6" />
+  </button>
+
+  @if (isMobileMenuOpen) {
+    <div class="absolute top-16 left-0 w-full bg-gray-900 text-white md:hidden">
+      <nav class="flex flex-col items-center space-y-4 py-4">
+        <a routerLink="/categories" (click)="toggleMobileMenu()">CATEGORIES</a>
+        <a routerLink="/movies" (click)="toggleMobileMenu()">MOVIES</a>
+        <a routerLink="/tv-shows" (click)="toggleMobileMenu()">TV SHOWS</a>
+        <a routerLink="/login" (click)="toggleMobileMenu()">LOGIN</a>
+      </nav>
+    </div>
+  }
 </header>

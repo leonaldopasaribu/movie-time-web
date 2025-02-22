@@ -3,12 +3,12 @@
     grid: true,
     'gap-6 gap-x-8': true,
     'grid-cols-1': numberOfGrid === 1,
-    'grid-cols-2': numberOfGrid === 2,
-    'grid-cols-3': numberOfGrid === 3,
-    'grid-cols-4': numberOfGrid === 4,
-    'grid-cols-5': numberOfGrid === 5,
-    'grid-cols-6': numberOfGrid === 6,
-    'grid-cols-7': numberOfGrid >= 7,
+    'sm:grid-cols-2': numberOfGrid >= 2,
+    'md:grid-cols-3': numberOfGrid >= 3,
+    'lg:grid-cols-4': numberOfGrid >= 4,
+    'xl:grid-cols-5': numberOfGrid >= 5,
+    '2xl:grid-cols-6': numberOfGrid >= 6,
+    'justify-center': true,
   }"
 >
   @for (movie of movies; track $index) {

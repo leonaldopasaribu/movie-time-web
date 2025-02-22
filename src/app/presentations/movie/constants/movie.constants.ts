@@ -2,7 +2,7 @@ import { Review } from '../models/review.model';
 
 export const SAMPLE_TITLE = 'avengers';
 
-export const RECOMENDATIONS_MOVIES_LIMIT = 7;
+export const RECOMENDATIONS_MOVIES_LIMIT = 6;
 
 export const REVIEWS: Review[] = [
   {

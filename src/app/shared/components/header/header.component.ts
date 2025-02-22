@@ -6,4 +6,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   imports: [RouterLink],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  isMobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+}
