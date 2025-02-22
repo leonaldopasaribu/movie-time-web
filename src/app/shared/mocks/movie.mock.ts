@@ -31,7 +31,7 @@ export const MOVIE_DTO_OMDB_MOCK = {
 
 export const MOVIE_ENTITY_MOCK: MovieEntity = {
   imdbID: 'tt1234567',
-  poster: 'https://example.com/poster.jpg',
+  posterUrl: 'https://example.com/poster.jpg',
   title: 'Mock Movie Title',
   type: 'movie',
   year: '2023',
@@ -59,31 +59,33 @@ export const MOVIE_ENTITY_MOCK: MovieEntity = {
   production: 'Mock Studios',
   website: 'https://example.com',
   response: 'True',
+  backdropUrl: '',
+  rating: 0,
 };
 
 export const MOVIES_ENTITY_MOCK: Pick<
   MovieEntity,
-  'title' | 'year' | 'imdbID' | 'type' | 'poster'
+  'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'
 >[] = [
   {
     imdbID: 'tt1234567',
     title: 'Mock Movie 1',
     year: '2023',
     type: 'movie',
-    poster: 'https://example.com/poster1.jpg',
+    posterUrl: 'https://example.com/poster1.jpg',
   },
   {
     imdbID: 'tt7654321',
     title: 'Mock Movie 2',
     year: '2021',
     type: 'series',
-    poster: 'https://example.com/poster2.jpg',
+    posterUrl: 'https://example.com/poster2.jpg',
   },
   {
     imdbID: 'tt9876543',
     title: 'Mock Movie 3',
     year: '2019',
     type: 'movie',
-    poster: 'https://example.com/poster3.jpg',
+    posterUrl: 'https://example.com/poster3.jpg',
   },
 ];

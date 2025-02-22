@@ -10,8 +10,10 @@ export class MovieMapperOmdb
 {
   toEntity(dto: MovieDtoOmdb): MovieEntity {
     return {
+      backdropUrl: '',
+      rating: 0,
       imdbID: dto.imdbID,
-      poster: dto.Poster,
+      posterUrl: dto.Poster,
       title: dto.Title,
       type: dto.Type,
       year: dto.Year,

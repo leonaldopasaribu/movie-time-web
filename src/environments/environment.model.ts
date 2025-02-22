@@ -1,4 +1,5 @@
 export interface Environment {
-  apiUrl: string;
   apiKey: string;
+  omdbApiUrl: string;
+  tmdbApiUrl: string;
 }

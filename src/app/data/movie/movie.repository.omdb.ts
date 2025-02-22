@@ -19,7 +19,7 @@ export class MovieRepositoryOmdb extends MovieRepository {
 
   constructor() {
     super();
-    this.baseUrl = `${environment.apiUrl}/?apikey=${environment.apiKey}`;
+    this.baseUrl = `${environment.omdbApiUrl}/?apikey=${environment.apiKey}`;
   }
 
   override fetchOne(imdbID: string): Observable<MovieEntity> {
@@ -31,16 +31,16 @@ export class MovieRepositoryOmdb extends MovieRepository {
   override fetchMany(
     title: string,
   ): Observable<
-    Array<Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'poster'>>
+    Array<Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>>
   > {
     return this.http
       .get<FetchResponseDto<MovieDtoOmdb[]>>(`${this.baseUrl}&s=${title}`)
       .pipe(
         map(({ Search }) =>
           Search.map(search => {
-            const { title, year, imdbID, type, poster } =
+            const { title, year, imdbID, type, posterUrl } =
               this.mapper.toEntity(search);
-            return { title, year, imdbID, type, poster };
+            return { title, year, imdbID, type, posterUrl };
           }),
         ),
       );

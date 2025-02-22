@@ -13,7 +13,7 @@ export class MoviesGridComponent {
   @Input() isLoading = false;
   @Input() movies: Pick<
     MovieEntity,
-    'title' | 'year' | 'imdbID' | 'type' | 'poster'
+    'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'
   >[] = [];
   @Input() numberOfGrid = 7;
   @Output() clicked = new EventEmitter<string>();

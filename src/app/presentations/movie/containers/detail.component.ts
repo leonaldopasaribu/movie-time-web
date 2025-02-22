@@ -40,7 +40,7 @@ export class DetailComponent implements OnInit {
   $isError: Signal<boolean>;
   $movie: Signal<MovieEntity>;
   $movies: Signal<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'poster'>[]
+    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
   >;
   reviews: Review[];
 

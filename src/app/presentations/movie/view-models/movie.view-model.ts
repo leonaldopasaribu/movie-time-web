@@ -20,7 +20,7 @@ export class MovieViewModel {
   }
 
   get $movies(): Signal<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'poster'>[]
+    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
   > {
     return this.movieStore.select('movies');
   }

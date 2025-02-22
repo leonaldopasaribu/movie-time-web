@@ -7,6 +7,6 @@ export abstract class MovieRepository {
   abstract fetchMany(
     title: string,
   ): Observable<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'poster'>[]
+    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
   >;
 }

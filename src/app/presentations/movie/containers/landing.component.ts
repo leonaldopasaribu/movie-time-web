@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
   $isLoading: Signal<boolean>;
   $isError: Signal<boolean>;
   $movies: Signal<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'poster'>[]
+    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
   >;
   selectedSort: 'popularity' | 'releaseDate' = 'popularity';
 

@@ -5,8 +5,10 @@ export class DetailState {
   isLoading = false;
   isError = false;
   movie: MovieEntity = {
+    backdropUrl: '',
+    rating: 0,
     imdbID: '',
-    poster: '',
+    posterUrl: '',
     title: '',
     type: '',
     year: '',
