@@ -1,14 +1,11 @@
 import { Component, inject, Signal } from '@angular/core';
 
 import { FilterComponent } from '../components/filter/filter.component';
-import { MoviesStore } from '../stores/movies.stores';
+import { MoviesGridComponent } from '../components/movies-grid/movies-grid.component';
+import { MovieViewModel } from '../view-models/movie.view-model';
 import { MoviesViewModel } from '../view-models/movies.view-model';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
-import { MovieRepository } from 'src/app/core/repositories/movie.repository';
-import { MovieMapperOmdb } from 'src/app/data/movie/movie.mapper.omdb';
-import { MovieRepositoryOmdb } from 'src/app/data/movie/movie.repository.omdb';
-import { CardComponent } from 'src/app/shared/components/card';
 import { FooterComponent } from 'src/app/shared/components/footer';
 import { HeaderComponent } from 'src/app/shared/components/header';
 import { ButtonDirective, ButtonTheme } from 'src/app/shared/directives/button';
@@ -16,23 +13,19 @@ import { ButtonDirective, ButtonTheme } from 'src/app/shared/directives/button';
 @Component({
   imports: [
     ButtonDirective,
-    CardComponent,
     FilterComponent,
     FooterComponent,
     HeaderComponent,
+    MoviesGridComponent,
   ],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
-  providers: [
-    MoviesStore,
-    MoviesViewModel,
-    MovieMapperOmdb,
-    { provide: MovieRepository, useClass: MovieRepositoryOmdb },
-  ],
+  providers: [MoviesViewModel],
 })
 export class MoviesComponent {
   readonly buttonTheme: typeof ButtonTheme = ButtonTheme;
 
+  private readonly movieViewModel = inject(MovieViewModel);
   private readonly moviesViewModel = inject(MoviesViewModel);
 
   $isLoading: Signal<boolean>;
@@ -43,12 +36,16 @@ export class MoviesComponent {
   selectedSort: 'popularity' | 'releaseDate' = 'popularity';
 
   constructor() {
-    this.$isLoading = this.moviesViewModel.$isLoading;
-    this.$isError = this.moviesViewModel.$isError;
-    this.$movies = this.moviesViewModel.$movies;
+    this.$isLoading = this.movieViewModel.$isLoading;
+    this.$isError = this.movieViewModel.$isError;
+    this.$movies = this.movieViewModel.$movies;
   }
 
   ngOnInit(): void {
-    this.moviesViewModel.fetchMovies();
+    this.movieViewModel.fetchMovies();
+  }
+
+  onViewButtonClick(imdbID: string): void {
+    this.moviesViewModel.navigateToDetail(imdbID);
   }
 }

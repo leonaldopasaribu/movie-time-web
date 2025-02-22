@@ -1,0 +1,108 @@
+<main>
+  <app-header></app-header>
+
+  <section
+    class="relative mt-[-77px] w-full bg-gray-900 px-[120px] pt-[262px] text-white"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center opacity-30"
+      style="
+        background-image: url('https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg');
+      "
+    ></div>
+
+    <div class="relative items-start gap-6">
+      <div class="absolute">
+        <img
+          [src]="$movie().poster"
+          alt="Wonder Woman 1984"
+          class="rounded-lg shadow-lg"
+          width="220"
+          height="330"
+        />
+      </div>
+
+      <div class="ml-[250px] flex-1">
+        <p class="text-sm text-gray-300">{{ $movie().year }}</p>
+        <h1 class="text-4xl font-bold">{{ $movie().title }}</h1>
+        <p class="mt-1 text-sm">{{ $movie().genre }}</p>
+      </div>
+
+      <div
+        class="mt-4 mr-[-120px] ml-[-120px] flex items-center gap-4 bg-gray-900/75 py-6 pl-[365px]"
+      >
+        <div class="flex flex-wrap items-center gap-1">
+          <img src="assets/icons/star.svg" alt="Star" width="32" height="32" />
+
+          <span class="mr-4 text-[36px] font-semibold">
+            {{ $movie().imdbRating }}
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-3 border-r border-gray-400 pr-8">
+          <p class="text-xs text-gray-400 uppercase">User Score</p>
+          <p class="text-xs text-white">{{ $movie().imdbVotes }} VOTES</p>
+        </div>
+
+        <div class="flex flex-col gap-3 border-r border-gray-400 pr-8">
+          <p class="text-xs text-gray-400 uppercase">Status</p>
+          <p class="text-xs text-white uppercase">Released</p>
+        </div>
+
+        <div class="flex flex-col gap-3 border-r border-gray-400 pr-8">
+          <p class="text-xs text-gray-400 uppercase">Language</p>
+          <p class="text-xs text-white uppercase">{{ $movie().language }}</p>
+        </div>
+
+        <div class="flex flex-col gap-3 border-r border-gray-400 pr-8">
+          <p class="text-xs text-gray-400 uppercase">Budget</p>
+          <p class="text-xs text-white uppercase">{{ $movie().boxOffice }}</p>
+        </div>
+
+        <div class="flex flex-col gap-3 border-r border-gray-400 pr-8">
+          <p class="text-xs text-gray-400 uppercase">Production</p>
+          <p class="text-xs text-white uppercase">{{ $movie().production }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-[120px] pt-[43px] pb-[50px]">
+    <div class="mt-6 ml-[250px] items-center">
+      <h3
+        class="flex-start flex text-left text-lg font-semibold text-red-500 uppercase"
+      >
+        Overview
+      </h3>
+      <p class="mt-2">
+        {{ $movie().plot }}
+      </p>
+    </div>
+
+    <h2 class="mb-4 text-sm font-bold text-red-500 uppercase">Reviews</h2>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      @for (review of reviews; track $index) {
+        <app-review-card
+          date="{{ review.date }}"
+          highlightMessage="{{ review.highlightMessage }}"
+          message="{{ review.message }}"
+          name="{{ review.name }}"
+          rating="{{ review.rating }}"
+        ></app-review-card>
+      }
+    </div>
+  </section>
+
+  <section class="bg-[#1E232B] px-[120px] py-[50px]">
+    <p class="text-sm text-white uppercase">Recomendation Movies</p>
+
+    <app-movies-grid
+      [isLoading]="$isLoadingRecomendations()"
+      [movies]="$movies()"
+      (clicked)="onViewButtonClick($event)"
+    ></app-movies-grid>
+  </section>
+
+  <app-footer></app-footer>
+</main>

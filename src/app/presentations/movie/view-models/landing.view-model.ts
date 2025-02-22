@@ -1,43 +1,13 @@
-import { inject, Injectable, Signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { SAMPLE_TITLE } from '../constants/movie.constants';
-import { LandingStore } from '../stores/landing.store';
-
-import { MovieRepository } from 'src/app/core/repositories/movie.repository';
-import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { MOVIES_ROUTE_URL } from 'src/app/shared/constants/route-url.constants';
 
 @Injectable()
 export class LandingViewModel {
-  private readonly landingStore = inject(LandingStore);
-  private readonly movieRepository = inject(MovieRepository);
+  private readonly router = inject(Router);
 
-  get $isLoading(): Signal<boolean> {
-    return this.landingStore.select('isLoading');
-  }
-
-  get $isError(): Signal<boolean> {
-    return this.landingStore.select('isError');
-  }
-
-  get $movies(): Signal<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'poster'>[]
-  > {
-    return this.landingStore.select('movies');
-  }
-
-  fetchMovies(): void {
-    const title = SAMPLE_TITLE;
-
-    this.landingStore.markAsLoading();
-
-    this.movieRepository.fetchMany(title).subscribe({
-      next: response => {
-        this.landingStore.loadMovies(response);
-        this.landingStore.markAsSuccess();
-      },
-      error: error => {
-        this.landingStore.markAsError(error.message);
-      },
-    });
+  navigateToDetail(imdbID: string): void {
+    this.router.navigateByUrl(`${MOVIES_ROUTE_URL}/${imdbID}`);
   }
 }

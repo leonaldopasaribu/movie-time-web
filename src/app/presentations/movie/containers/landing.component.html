@@ -1,21 +1,23 @@
 <main>
   <app-header></app-header>
 
-  <section class="Landing px-[120px] py-[89px]">
-    <div class="flex items-center justify-between">
+  <section class="Landing px-6 py-12 sm:px-12 lg:px-20 xl:px-28">
+    <div class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <h2 class="relative inline-block text-2xl font-semibold text-white">
-          <span class="absolute -top-2 left-0 h-1 w-12 bg-red-500"></span>
+        <h2
+          class="relative inline-block text-xl font-semibold text-white sm:text-2xl"
+        >
+          <span
+            class="absolute -top-2 left-0 h-1 w-10 bg-red-500 sm:w-12"
+          ></span>
           Discover Movies
         </h2>
       </div>
-      <div class="flex gap-2">
+      <div class="flex flex-wrap gap-2">
         <button
           appButton
           [theme]="
-            selectedSort === 'popularity'
-              ? buttonTheme.Primary
-              : buttonTheme.Secondary
+            isPopularitySort ? buttonTheme.Primary : buttonTheme.Secondary
           "
           (click)="onSortButtonClick('popularity')"
         >
@@ -24,9 +26,7 @@
         <button
           appButton
           [theme]="
-            selectedSort === 'releaseDate'
-              ? buttonTheme.Primary
-              : buttonTheme.Secondary
+            isReleaseDateSort ? buttonTheme.Primary : buttonTheme.Secondary
           "
           (click)="onSortButtonClick('releaseDate')"
         >
@@ -35,19 +35,12 @@
       </div>
     </div>
 
-    <div
-      class="mt-[43px] grid grid-cols-2 gap-6 gap-x-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7"
-    >
-      @for (movie of $movies(); track $index) {
-        <app-card
-          [isLoading]="$isLoading()"
-          [image]="movie.poster"
-          [title]="movie.title"
-          [type]="movie.type"
-          [year]="movie.year"
-          rating="9.0"
-        ></app-card>
-      }
+    <div class="mt-10">
+      <app-movies-grid
+        [isLoading]="$isLoading()"
+        [movies]="$movies()"
+        (clicked)="onViewButtonClick($event)"
+      ></app-movies-grid>
     </div>
   </section>
 

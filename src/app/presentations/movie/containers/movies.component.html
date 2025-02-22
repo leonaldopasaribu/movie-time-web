@@ -12,26 +12,16 @@
 
   <section class="pb-10">
     <div class="flex gap-[30px] px-[120px]">
-      <!-- Sidebar -->
-      <div class="bg-gray-900 p-4 rounded-lg">
+      <div class="rounded-lg bg-gray-900 p-4">
         <app-filter></app-filter>
       </div>
 
-      <!-- Movies Grid -->
-      <div
-        class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-5"
-      >
-        @for (movie of $movies(); track $index) {
-          <app-card
-            [isLoading]="$isLoading()"
-            [image]="movie.poster"
-            [title]="movie.title"
-            [type]="movie.type"
-            [year]="movie.year"
-            rating="9.0"
-          ></app-card>
-        }
-      </div>
+      <app-movies-grid
+        [isLoading]="$isLoading()"
+        [movies]="$movies()"
+        [numberOfGrid]="5"
+        (clicked)="onViewButtonClick($event)"
+      ></app-movies-grid>
     </div>
   </section>
 

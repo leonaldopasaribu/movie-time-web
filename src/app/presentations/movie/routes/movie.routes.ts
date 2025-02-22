@@ -18,6 +18,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('../containers/movies.component').then(m => m.MoviesComponent),
       },
+      {
+        path: 'movies/:imdbID',
+        loadComponent: () =>
+          import('../containers/detail.component').then(m => m.DetailComponent),
+        runGuardsAndResolvers: 'paramsChange',
+      },
     ],
   },
 ];

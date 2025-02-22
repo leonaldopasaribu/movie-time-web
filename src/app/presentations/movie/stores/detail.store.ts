@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { MoviesState } from '../states/movies.state';
+import { DetailState } from '../states/detail.state';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
-
 import { SignalsStore } from 'src/app/shared/base';
 
 @Injectable()
-export class MoviesStore extends SignalsStore<MoviesState> {
+export class DetailStore extends SignalsStore<DetailState> {
   constructor() {
-    super(new MoviesState());
+    super(new DetailState());
   }
 
   markAsLoading(): void {
@@ -24,12 +23,7 @@ export class MoviesStore extends SignalsStore<MoviesState> {
     this.setState({ errorMessage: '', isLoading: false });
   }
 
-  loadMovies(
-    movies: Pick<
-      MovieEntity,
-      'title' | 'year' | 'imdbID' | 'type' | 'poster'
-    >[],
-  ): void {
-    this.setState({ movies });
+  loadMovie(movie: MovieEntity): void {
+    this.setState({ movie });
   }
 }

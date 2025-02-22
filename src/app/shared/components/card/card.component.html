@@ -39,7 +39,14 @@
         <span>{{ rating }}</span>
       </div>
       <p class="mt-1 mt-[25px] text-sm text-white capitalize">{{ type }}</p>
-      <button appButton class="mt-[25px] px-[33px]" id="BtnView">View</button>
+      <button
+        appButton
+        class="mt-[25px] px-[33px]"
+        id="BtnView"
+        (click)="onViewButtonClick(imdbID)"
+      >
+        View
+      </button>
     </div>
   }
 

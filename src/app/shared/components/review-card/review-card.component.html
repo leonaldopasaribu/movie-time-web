@@ -1,0 +1,32 @@
+<div class="rounded-2xl bg-white p-6 shadow-lg">
+  <div class="flex items-center gap-4">
+    <img
+      src="assets/icons/avatar.svg"
+      alt="Reviewer"
+      class="h-10 w-10 rounded-full"
+    />
+    <div>
+      <h3 class="text-md font-bold">{{ name }}</h3>
+      <p class="text-sm text-gray-500">{{ date }}</p>
+    </div>
+    <div class="ml-auto flex rounded-lg bg-gray-100 px-3 py-1">
+      <span class="text-yellow-500">
+        <img
+          src="assets/icons/star.svg"
+          alt="Star"
+          class="mt-3"
+          width="17"
+          height="17"
+        />
+      </span>
+      <span class="ml-1 text-[36px] font-bold">{{ rating }}</span>
+    </div>
+  </div>
+
+  <p class="mt-3 text-gray-600 italic">
+    {{ message }}
+    <span class="cursor-pointer text-red-500 underline">
+      {{ highlightMessage }}
+    </span>
+  </p>
+</div>
