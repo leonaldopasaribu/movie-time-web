@@ -39,4 +39,7 @@ ng test
 - [🔹 Angular Material](https://material.angular.io/) – A UI component library for creating high-quality Angular applications with minimal effort.  
 - [🎨 Tailwind CSS](https://tailwindcss.com/) – A utility-first CSS framework for building modern and responsive designs quickly.  
 
+## ⚙️ Development Tools  
+- [🚀 pnpm](https://pnpm.io/) – Fast, disk-efficient package manager. 
+
 
