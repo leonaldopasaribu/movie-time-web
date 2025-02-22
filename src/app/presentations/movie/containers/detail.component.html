@@ -93,25 +93,15 @@
     <h2 class="mt-6 text-sm font-bold text-red-500 uppercase">Reviews</h2>
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-      @if ($isLoadingDetail()) {
-        <div class="flex flex-wrap gap-6">
-          <div
-            class="min-h-[300px] flex-1 animate-pulse rounded-md bg-gray-300"
-          ></div>
-          <div
-            class="min-h-[300px] flex-1 animate-pulse rounded-md bg-gray-300"
-          ></div>
-        </div>
-      } @else {
-        @for (review of reviews; track $index) {
-          <app-review-card
-            date="{{ review.date }}"
-            highlightMessage="{{ review.highlightMessage }}"
-            message="{{ review.message }}"
-            name="{{ review.name }}"
-            rating="{{ review.rating }}"
-          ></app-review-card>
-        }
+      @for (review of reviews; track $index) {
+        <app-review-card
+          [isLoading]="$isLoadingDetail()"
+          date="{{ review.date }}"
+          highlightMessage="{{ review.highlightMessage }}"
+          message="{{ review.message }}"
+          name="{{ review.name }}"
+          rating="{{ review.rating }}"
+        ></app-review-card>
       }
     </div>
   </section>
