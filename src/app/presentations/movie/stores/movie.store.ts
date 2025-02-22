@@ -26,7 +26,7 @@ export class MovieStore extends SignalsStore<MovieState> {
   loadMovies(
     movies: Pick<
       MovieEntity,
-      'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'
+      'id' | 'posterUrl' | 'releaseDate' | 'type' | 'title'
     >[],
   ): void {
     this.setState({ movies });

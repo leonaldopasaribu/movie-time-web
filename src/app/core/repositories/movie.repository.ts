@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 import { MovieEntity } from '../entities/movie.entity';
 
 export abstract class MovieRepository {
-  abstract fetchOne(imdbID: string): Observable<MovieEntity>;
-  abstract fetchMany(
-    title: string,
+  abstract fetchOne<T>(id: T): Observable<MovieEntity>;
+  abstract fetchMany<T>(
+    keyword: T,
   ): Observable<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
+    Pick<MovieEntity, 'id' | 'posterUrl' | 'releaseDate' | 'type' | 'title'>[]
   >;
 }

@@ -10,7 +10,7 @@ import {
 } from 'src/app/shared/mocks/movie.mock';
 
 describe('MovieMapperOmdb', () => {
-  let mapper: MovieMapperOmdb;
+  let mapper: MovieMapperOmdb<MovieEntity>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

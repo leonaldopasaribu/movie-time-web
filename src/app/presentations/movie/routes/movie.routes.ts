@@ -19,7 +19,7 @@ export const routes: Routes = [
           import('../containers/movies.component').then(m => m.MoviesComponent),
       },
       {
-        path: 'movies/:imdbID',
+        path: 'movies/:id',
         loadComponent: () =>
           import('../containers/detail.component').then(m => m.DetailComponent),
         runGuardsAndResolvers: 'paramsChange',

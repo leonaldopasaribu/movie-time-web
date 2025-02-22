@@ -11,9 +11,11 @@ import { MovieRepository } from 'src/app/core/repositories/movie.repository';
 import { environment } from 'src/environments/environment'; // Fixed import
 
 @Injectable()
-export class MovieRepositoryOmdb extends MovieRepository {
+export class MovieRepositoryOmdb<
+  TEntity extends MovieEntity,
+> extends MovieRepository {
   private readonly http = inject(HttpClient);
-  private readonly mapper = inject(MovieMapperOmdb);
+  private readonly mapper = inject(MovieMapperOmdb<TEntity>);
 
   private readonly baseUrl: string;
 
@@ -22,25 +24,21 @@ export class MovieRepositoryOmdb extends MovieRepository {
     this.baseUrl = `${environment.omdbApiUrl}/?apikey=${environment.apiKey}`;
   }
 
-  override fetchOne(imdbID: string): Observable<MovieEntity> {
+  override fetchOne<TKeyword>(imdbID: TKeyword): Observable<TEntity> {
     return this.http
       .get<MovieDtoOmdb>(`${this.baseUrl}&i=${imdbID}`)
       .pipe(map(dto => this.mapper.toEntity(dto)));
   }
 
-  override fetchMany(
-    title: string,
-  ): Observable<
-    Array<Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>>
-  > {
+  override fetchMany<TKeyword>(title: TKeyword): Observable<TEntity[]> {
     return this.http
       .get<FetchResponseOmdbDto<MovieDtoOmdb[]>>(`${this.baseUrl}&s=${title}`)
       .pipe(
         map(({ Search }) =>
           Search.map(search => {
-            const { title, year, imdbID, type, posterUrl } =
+            const { title, releaseDate, imdbID, type, posterUrl } =
               this.mapper.toEntity(search);
-            return { title, year, imdbID, type, posterUrl };
+            return { title, releaseDate, imdbID, type, posterUrl } as TEntity;
           }),
         ),
       );

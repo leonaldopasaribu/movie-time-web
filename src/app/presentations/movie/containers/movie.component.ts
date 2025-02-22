@@ -6,7 +6,8 @@ import { MovieStore } from '../stores/movie.store';
 
 import { MovieRepository } from 'src/app/core/repositories/movie.repository';
 import { MovieMapperOmdb } from 'src/app/data/movie/movie.mapper.omdb';
-import { MovieRepositoryOmdb } from 'src/app/data/movie/movie.repository.omdb';
+import { MovieRepositoryTmdb } from 'src/app/data/movie/movie.repository.tmdb';
+import { MovieMapperTmdb } from 'src/app/data/movie/movie.mapper.tmdb';
 
 @Component({
   imports: [RouterOutlet],
@@ -15,16 +16,8 @@ import { MovieRepositoryOmdb } from 'src/app/data/movie/movie.repository.omdb';
     MovieStore,
     MovieViewModel,
     MovieMapperOmdb,
-    { provide: MovieRepository, useClass: MovieRepositoryOmdb },
+    MovieMapperTmdb,
+    { provide: MovieRepository, useClass: MovieRepositoryTmdb },
   ],
 })
-export class MovieComponent implements OnInit {
-  private readonly movieViewModel = inject(MovieViewModel);
-
-  constructor() {
-    
-  }
-  ngOnInit(): void {
-    this.movieViewModel.fetchMovies();
-  }
-}
+export class MovieComponent {}

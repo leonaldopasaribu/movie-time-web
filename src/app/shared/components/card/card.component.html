@@ -43,7 +43,7 @@
         appButton
         class="mt-[25px] px-[33px]"
         id="BtnView"
-        (click)="onViewButtonClick(imdbID)"
+        (click)="onViewButtonClick(id)"
       >
         View
       </button>
@@ -56,7 +56,7 @@
       <div class="h-3 w-1/2 animate-pulse bg-gray-400"></div>
     } @else {
       <h3 class="text-sm font-semibold">{{ title }}</h3>
-      <p class="text-xs text-gray-400">{{ year }}</p>
+      <p class="text-xs text-gray-400">{{ releaseDate }}</p>
     }
   </div>
 </div>

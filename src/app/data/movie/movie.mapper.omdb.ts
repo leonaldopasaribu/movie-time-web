@@ -1,42 +1,44 @@
 import { Injectable } from '@angular/core';
-
 import { EntityMapper } from 'src/app/shared/base';
 import { MovieDtoOmdb } from './movie.dto.omdb';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { RatingEntity } from 'src/app/core/entities/rating.entity';
 
 @Injectable()
-export class MovieMapperOmdb
-  implements EntityMapper<MovieDtoOmdb, MovieEntity>
+export class MovieMapperOmdb<T extends Partial<MovieEntity>>
+  implements EntityMapper<MovieDtoOmdb, T>
 {
-  toEntity(dto: MovieDtoOmdb): MovieEntity {
+  toEntity(dto: MovieDtoOmdb): T {
     return {
+      id: dto.imdbID,
+      actors: dto.Actors,
+      awards: dto.Awards,
       backdropUrl: '',
-      rating: 0,
+      boxOffice: dto.BoxOffice,
+      country: dto.Country,
+      director: dto.Director,
+      dvd: dto.DVD,
+      genre: dto.Genre,
+      genres: [],
       imdbID: dto.imdbID,
+      imdbRating: dto.imdbRating,
+      votes: 0,
+      language: dto.Language,
+      metascore: dto.Metascore,
       posterUrl: dto.Poster,
+      plot: dto.Plot,
+      production: dto.Production,
+      rated: dto.Rated,
+      rating: 0,
+      ratings: dto.Ratings,
+      releaseDate: dto.Year,
+      response: dto.Response,
+      runtime: dto.Runtime,
+      status: dto.Released,
       title: dto.Title,
       type: dto.Type,
-      year: dto.Year,
-      ratings: dto.Ratings,
-      rated: dto.Rated,
-      released: dto.Released,
-      runtime: dto.Runtime,
-      genre: dto.Genre,
-      director: dto.Director,
-      writer: dto.Writer,
-      actors: dto.Actors,
-      plot: dto.Plot,
-      language: dto.Language,
-      country: dto.Country,
-      awards: dto.Awards,
-      metascore: dto.Metascore,
-      imdbRating: dto.imdbRating,
-      imdbVotes: dto.imdbVotes,
-      dvd: dto.DVD,
-      boxOffice: dto.BoxOffice,
-      production: dto.Production,
       website: dto.Website,
-      response: dto.Response,
-    };
+      writer: dto.Writer,
+    } as unknown as T;
   }
 }

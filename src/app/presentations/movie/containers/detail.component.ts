@@ -1,3 +1,4 @@
+import { CommonModule, NgStyle } from '@angular/common';
 import { Component, computed, inject, OnInit, Signal } from '@angular/core';
 
 import { MoviesGridComponent } from '../components/movies-grid/movies-grid.component';
@@ -9,8 +10,8 @@ import { MovieViewModel } from '../view-models/movie.view-model';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { MovieRepository } from 'src/app/core/repositories/movie.repository';
+import { MovieRepositoryTmdb } from 'src/app/data/movie/movie.repository.tmdb';
 import { MovieMapperOmdb } from 'src/app/data/movie/movie.mapper.omdb';
-import { MovieRepositoryOmdb } from 'src/app/data/movie/movie.repository.omdb';
 import { FooterComponent } from 'src/app/shared/components/footer';
 import { HeaderComponent } from 'src/app/shared/components/header';
 import { ReviewCardComponent } from 'src/app/shared/components/review-card';
@@ -18,9 +19,11 @@ import { ReviewCardComponent } from 'src/app/shared/components/review-card';
 @Component({
   templateUrl: './detail.component.html',
   imports: [
+    CommonModule,
     FooterComponent,
     HeaderComponent,
     MoviesGridComponent,
+    NgStyle,
     ReviewCardComponent,
   ],
   providers: [
@@ -28,7 +31,7 @@ import { ReviewCardComponent } from 'src/app/shared/components/review-card';
     DetailViewModel,
     MovieViewModel,
     MovieMapperOmdb,
-    { provide: MovieRepository, useClass: MovieRepositoryOmdb },
+    { provide: MovieRepository, useClass: MovieRepositoryTmdb },
   ],
 })
 export class DetailComponent implements OnInit {
@@ -40,7 +43,7 @@ export class DetailComponent implements OnInit {
   $isError: Signal<boolean>;
   $movie: Signal<MovieEntity>;
   $movies: Signal<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
+    Pick<MovieEntity, 'id' | 'posterUrl' | 'releaseDate' | 'type' | 'title'>[]
   >;
   reviews: Review[];
 
@@ -57,7 +60,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.detailViewModel.fetchMovie();
-    this.movieViewModel.fetchMovies();
+    this.detailViewModel.fetchTopRatedMovies();
     this.detailViewModel.subscribeToParamsMap();
   }
 

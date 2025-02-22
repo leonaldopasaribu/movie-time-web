@@ -3,8 +3,9 @@ import { inject, Injectable, Signal } from '@angular/core';
 import { SAMPLE_TITLE } from '../constants/movie.constants';
 import { MovieStore } from '../stores/movie.store';
 
-import { MovieRepository } from 'src/app/core/repositories/movie.repository';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { MovieType } from 'src/app/core/entities/movie-type.enum';
+import { MovieRepository } from 'src/app/core/repositories/movie.repository';
 
 @Injectable()
 export class MovieViewModel {
@@ -20,7 +21,7 @@ export class MovieViewModel {
   }
 
   get $movies(): Signal<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
+    Pick<MovieEntity, 'id' | 'posterUrl' | 'releaseDate' | 'type' | 'title'>[]
   > {
     return this.movieStore.select('movies');
   }
@@ -31,6 +32,20 @@ export class MovieViewModel {
     this.movieStore.markAsLoading();
 
     this.movieRepository.fetchMany(title).subscribe({
+      next: response => {
+        this.movieStore.loadMovies(response);
+        this.movieStore.markAsSuccess();
+      },
+      error: error => {
+        this.movieStore.markAsError(error.message);
+      },
+    });
+  }
+
+  fetchMoviesByType(type: MovieType): void {
+    this.movieStore.markAsLoading();
+
+    this.movieRepository.fetchMany(type).subscribe({
       next: response => {
         this.movieStore.loadMovies(response);
         this.movieStore.markAsSuccess();

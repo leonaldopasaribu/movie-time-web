@@ -4,6 +4,8 @@ export class MovieState {
   errorMessage = '';
   isLoading = false;
   isError = false;
-  movies: Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[] =
-    [];
+  movies: Pick<
+    MovieEntity,
+    'id' | 'posterUrl' | 'releaseDate' | 'type' | 'title'
+  >[] = [];
 }

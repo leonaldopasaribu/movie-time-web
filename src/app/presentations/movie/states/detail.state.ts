@@ -1,36 +1,10 @@
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
+import { MOVIE_ENTITY_MOCK } from 'src/app/shared/mocks/movie.mock';
+
 export class DetailState {
   errorMessage = '';
   isLoading = false;
   isError = false;
-  movie: MovieEntity = {
-    backdropUrl: '',
-    rating: 0,
-    imdbID: '',
-    posterUrl: '',
-    title: '',
-    type: '',
-    year: '',
-    ratings: [],
-    rated: '',
-    released: '',
-    runtime: '',
-    genre: '',
-    director: '',
-    writer: '',
-    actors: '',
-    plot: '',
-    language: '',
-    country: '',
-    awards: '',
-    metascore: '',
-    imdbRating: '',
-    imdbVotes: '',
-    dvd: '',
-    boxOffice: '',
-    production: '',
-    website: '',
-    response: '',
-  };
+  movie: MovieEntity = MOVIE_ENTITY_MOCK;
 }

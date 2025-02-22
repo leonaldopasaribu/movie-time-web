@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
   $isLoading: Signal<boolean>;
   $isError: Signal<boolean>;
   $movies: Signal<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
+    Pick<MovieEntity, 'id' | 'posterUrl' | 'releaseDate' | 'type' | 'title'>[]
   >;
   selectedSort: 'popularity' | 'releaseDate' = 'popularity';
 
@@ -48,11 +48,20 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movieViewModel.fetchMovies();
+    this.landingViewModel.fetchPopularMovies();
   }
 
   onSortButtonClick(sortType: 'popularity' | 'releaseDate') {
     this.selectedSort = sortType;
+
+    const isPopularitySort = sortType === 'popularity';
+
+    if (isPopularitySort) {
+      this.landingViewModel.fetchPopularMovies();
+      return;
+    }
+
+    this.landingViewModel.fetchNowPlayingMovies();
   }
 
   onViewButtonClick(imdbID: string): void {

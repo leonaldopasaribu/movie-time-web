@@ -13,14 +13,14 @@
 >
   @for (movie of movies; track $index) {
     <app-card
-      [imdbID]="movie.imdbID"
+      [id]="movie.id"
       [isLoading]="isLoading"
       [image]="movie.posterUrl"
       [title]="movie.title"
       [type]="movie.type"
-      [year]="movie.year"
+      [releaseDate]="movie.releaseDate"
       rating="9.0"
-      (clicked)="onViewButtonClick(movie.imdbID)"
+      (clicked)="onViewButtonClick(movie.id)"
     ></app-card>
   }
 </div>

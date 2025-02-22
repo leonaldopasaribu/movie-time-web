@@ -31,8 +31,9 @@ export class MoviesComponent {
   $isLoading: Signal<boolean>;
   $isError: Signal<boolean>;
   $movies: Signal<
-    Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>[]
+    Pick<MovieEntity, 'id' | 'posterUrl' | 'releaseDate' | 'type' | 'title'>[]
   >;
+
   selectedSort: 'popularity' | 'releaseDate' = 'popularity';
 
   constructor() {
@@ -42,7 +43,7 @@ export class MoviesComponent {
   }
 
   ngOnInit(): void {
-    this.movieViewModel.fetchMovies();
+    this.moviesViewModel.fetchPopularMovies();
   }
 
   onViewButtonClick(imdbID: string): void {

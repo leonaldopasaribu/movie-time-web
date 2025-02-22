@@ -5,7 +5,8 @@ export interface FetchResponseOmdbDto<T> {
 }
 
 export interface FetchResponseTmdbDto<T> {
-  Response: string;
-  totalResults: string;
-  Search: T;
+  page: number;
+  results: T;
+  total_pages: number;
+  total_results: number;
 }

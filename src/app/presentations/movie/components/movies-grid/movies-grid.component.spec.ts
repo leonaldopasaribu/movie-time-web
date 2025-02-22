@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { MoviesGridComponent } from './movies-grid.component';
 import { CardComponent } from 'src/app/shared/components/card';
+import { MOVIES_ENTITY_MOCK } from 'src/app/shared/mocks/movie.mock';
 
 describe('MoviesGridComponent', () => {
   let component: MoviesGridComponent;
@@ -26,22 +27,7 @@ describe('MoviesGridComponent', () => {
   });
 
   it('should render the correct number of movies', () => {
-    component.movies = [
-      {
-        title: 'Movie 1',
-        year: '2020',
-        imdbID: 'id1',
-        type: 'movie',
-        poster: 'url1',
-      },
-      {
-        title: 'Movie 2',
-        year: '2021',
-        imdbID: 'id2',
-        type: 'movie',
-        poster: 'url2',
-      },
-    ];
+    component.movies = MOVIES_ENTITY_MOCK;
     fixture.detectChanges();
 
     const movieCards = fixture.debugElement.queryAll(By.css('app-card'));

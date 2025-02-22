@@ -1,3 +1,4 @@
+import { GenreEntity } from './genre.entity';
 import { RatingEntity } from './rating.entity';
 
 export interface MovieEntity {
@@ -9,9 +10,10 @@ export interface MovieEntity {
   director: string;
   dvd: string;
   genre: string;
+  genres: GenreEntity[];
+  id: string;
   imdbID: string;
   imdbRating: string;
-  imdbVotes: string;
   language: string;
   metascore: string;
   plot: string;
@@ -20,12 +22,13 @@ export interface MovieEntity {
   rated: string;
   rating: number;
   ratings: RatingEntity[];
-  released: string;
+  releaseDate: string;
   response: string;
   runtime: string;
+  status: string;
   title: string;
   type: string;
+  votes: number;
   website: string;
   writer: string;
-  year: string;
 }
