@@ -8,7 +8,7 @@ import { FetchResponseDto } from '../base/response.model';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { MovieRepository } from 'src/app/core/repositories/movie.repository';
-import { environment } from 'src/app/environments/environment'; // Fixed import
+import { environment } from 'src/environments/environment'; // Fixed import
 
 @Injectable()
 export class MovieRepositoryOmdb extends MovieRepository {
