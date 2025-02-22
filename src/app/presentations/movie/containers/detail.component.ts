@@ -13,7 +13,7 @@ import { MovieMapperOmdb } from 'src/app/data/movie/movie.mapper.omdb';
 import { MovieRepositoryOmdb } from 'src/app/data/movie/movie.repository.omdb';
 import { FooterComponent } from 'src/app/shared/components/footer';
 import { HeaderComponent } from 'src/app/shared/components/header';
-import { ReviewCardComponent } from 'src/app/shared/components/review-card/review-card.component';
+import { ReviewCardComponent } from 'src/app/shared/components/review-card';
 
 @Component({
   templateUrl: './detail.component.html',
