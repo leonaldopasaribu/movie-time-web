@@ -1,28 +1,28 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 
-import { MoviesViewModel } from './movies.view-model';
+import { LandingViewModel } from './landing.view-model';
 
 import { MOVIES_ROUTE_URL } from 'src/app/shared/constants/route-url.constants';
 
-describe('MoviesViewModel', () => {
-  let viewModel: MoviesViewModel;
+describe('LandingViewModel', () => {
+  let viewModel: LandingViewModel;
   let router: Router;
 
   const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: Router, useValue: routerSpy }, MoviesViewModel],
+      providers: [{ provide: Router, useValue: routerSpy }, LandingViewModel],
     });
   });
 
   beforeEach(() => {
-    viewModel = TestBed.inject(MoviesViewModel);
+    viewModel = TestBed.inject(LandingViewModel);
     router = TestBed.inject(Router);
   });
 
-  it('should create MoviesViewModel', () => {
+  it('should create LandingViewModel', () => {
     expect(viewModel).toBeTruthy();
   });
 
