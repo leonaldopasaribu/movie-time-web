@@ -1,4 +1,8 @@
-# MovieTimeWeb
+# Movie Time
+<img width="1710" alt="Screenshot 2025-02-22 at 09 52 11 1" src="https://github.com/user-attachments/assets/1452f731-d3a3-44c1-abe1-3f097d182ac2" />
+<img width="1710" alt="Screenshot 2025-02-22 at 09 50 59" src="https://github.com/user-attachments/assets/7d23ed3d-b5d6-4414-b0f6-38525d8f7df6" />
+<img width="440" alt="Screenshot 2025-02-22 at 09 51 36" src="https://github.com/user-attachments/assets/ac306a3c-a5fc-41b1-addb-cfd9646f8614" />
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
 
@@ -11,20 +15,6 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
 
 ## Building
 
@@ -44,16 +34,9 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Running end-to-end tests
+## 🛠️ Tech Stack  
 
-For end-to-end (e2e) testing, run:
+- [🔹 Angular Material](https://material.angular.io/) – A UI component library for creating high-quality Angular applications with minimal effort.  
+- [🎨 Tailwind CSS](https://tailwindcss.com/) – A utility-first CSS framework for building modern and responsive designs quickly.  
 
-```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
