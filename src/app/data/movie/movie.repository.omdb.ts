@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 
 import { MovieDtoOmdb } from './movie.dto.omdb';
 import { MovieMapperOmdb } from './movie.mapper.omdb';
-import { FetchResponseDto } from '../base/response.model';
+import { FetchResponseOmdbDto } from '../base/response.model';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { MovieRepository } from 'src/app/core/repositories/movie.repository';
@@ -34,7 +34,7 @@ export class MovieRepositoryOmdb extends MovieRepository {
     Array<Pick<MovieEntity, 'title' | 'year' | 'imdbID' | 'type' | 'posterUrl'>>
   > {
     return this.http
-      .get<FetchResponseDto<MovieDtoOmdb[]>>(`${this.baseUrl}&s=${title}`)
+      .get<FetchResponseOmdbDto<MovieDtoOmdb[]>>(`${this.baseUrl}&s=${title}`)
       .pipe(
         map(({ Search }) =>
           Search.map(search => {
